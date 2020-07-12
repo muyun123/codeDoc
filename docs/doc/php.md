@@ -819,4 +819,14 @@ pdo
             $stmt->execute([':name'=>'one',':value'=>'1']);
             $stmt->execute([':name'=>'two',':value'=>'2']);
         ?>
+    
+    获取结果集
+        <?php
+            $stmt = $dbh->prepare("SELECT * FROM REGISTRY where name = ?");
+            if ($stmt->execute(array($_GET['name']))) {
+            while ($row = $stmt->fetch()) {
+                print_r($row);
+            }
+            }
+        ?>
 ```

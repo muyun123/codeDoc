@@ -164,16 +164,17 @@ gender值即为选中的radio元素的value值
 <option>B</option>
 <option>c</option>
 </select>
-<span>Selected:{（selected}）</span>
+<span>Selected:{{selected}}</span>
 ```
     - 多选：
 ```js
 <select v-model="multiSelected" multiple>
-<option selected>A</option>
-<option>B</option><option>C</option>
+    <option selected>A</option>
+    <option>B</option>
+    <option>C</option>
 </select>
 <br>
-<span>MultiSelected:（1multiselected.join（'1"）}）</span>
+<span>MultiSelected:{{1multiselected.join（'1"）}}</span>
 ```
 ## class与style绑定
 ### Class绑定
