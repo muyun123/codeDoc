@@ -217,9 +217,9 @@ data:{
 ><div v-bind:style-"{fontSize:alertstyle.fontSize,color:'red'}"></div>
 
 - 数组语法：v-bind:style允许将多个样式对象绑定到统一元素上。
-
-><div v-bind:style="[styleobjectA,styleobjectB]"></div>
-
+```js
+<div v-bind:style="[styleobjectA,styleobjectB]"></div>
+```
 ## 模板渲染 
 
 ### 条件渲染
@@ -285,7 +285,7 @@ v-for除了可以遍历数组外,也可以遍历对象,与$index类似,作用域
 
  ## 事件绑定与监听
 当模板渲染完成之后,就可以进行事件的绑定与监听了。Vue.js提供了v-on指令用来监听DOM事件,通常在模板内直接使用,而不像传统方式在is中获取DOM元素,然后绑定事件。例如：
-><button v-on:click="say">Say</button>
+>\<button v-on:click="say">Say</button>
 
  ### 方法及内联语句处理器
 通过v-on可以绑定实例选项属性methods中的方法作为事件的处理器,v-on：后参数接受所有的原生事件名称。例如：
