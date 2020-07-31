@@ -1394,52 +1394,33 @@ else if (method == "POST") {
 ```
 
 
+#### 文件上传
 
+>安装模块  `npm i formidable`
 
+>https://github.com/node-formidable/formidable
 
+在src / Formidable.js（ DEFAULT_OPTIONS常量）中查看其默认值。
 
+- options.encoding {string} -默认值'utf-8'；设置传入表单字段的编码，
+- options.uploadDir {string} -默认值os.tmpdir()；用于放置文件上载的目录。稍后可以使用fs.rename()
+- options.keepExtensions {boolean} -默认值false；是否包含原始文件的扩展名
+- options.maxFileSize {number} -默认值200 * 1024 * 1024（200mb）；限制上传文件的大小。
+- options.maxFields {number} -默认值1000；限制Querystring解析器将解码的字段数，将0设置为无限制
+- options.maxFieldsSize {number} -默认值20 * 1024 * 1024（20mb）；限制所有字段（文件除外）可一起分配的内存量（以字节为单位）。
+- options.hash {boolean} -默认值false；包括为传入文件计算的校验和，将其设置为某种哈希算法， 有关可用算法，请参见 crypto.createHash
+- options.multiples {boolean} -默认值false；当您调用该 .parse方法时，files（回调的）参数将包含用于使用HTML5 multiple 属性提交多个文件的输入的文件数组。同样，该fields参数将包含名称以“ []”结尾的字段的值数组。
 
-文件上传
+```js
+const formidable = require('formidable');
 
-安装模块  `npm i formidable`
+const form = formidable({ multiples: true, uploadDir: __dirname });
 
-
-
-
-
-
-
-d
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+form.parse(req, (err, fields, files) => {
+  console.log('fields:', fields);
+  console.log('files:', files);
+});
+```
 
 > 本文档大量参考相关书籍、文档、博客、手册等资源，最终解释权归 吴明仕 所有；
 >
@@ -1462,12 +1443,4 @@ d
 > http://www.expressjs.com.cn/   express中文网
 >
 >
-
-
-
-
-
-
-
-
 

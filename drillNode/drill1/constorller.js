@@ -23,7 +23,7 @@ var writeFile = function (path, data) {
 
 var others = function (urli) {
     return new Promise((resolve, reject) => {
-        fs.readFile('.' + urli, 'utf8', (err, html) => {
+        fs.readFile('.' + urli, (err, html) => {
             if (err == null) {
                 resolve(html);
             } else {
@@ -91,16 +91,43 @@ var updata = function (id) {
         resolve(htmls)
     })
 }
-var editupdata = function (id, body) {
+// 内容修改
+// var editupdata = function (id, body) {
+//     return new Promise(async (resolve, reject) => {
+//         var db = await index('./db.json');
+//         var json = JSON.parse(db);
+//         // json[id - 1].name = body.name;
+//         // json[id - 1].nengli = body.nengli;
+//         // json[id - 1].jituan = body.jituan;
+//         // console.log(json)
+//         // var result = await writeFile('./db.json', JSON.stringify(json));
+//         // resolve(result?'<a href="/">返回首页</a>':'<a href="/">修改失败返回首页</a>')
+//     })
+// }
+
+// 内容图片修改版
+var editupdata = function (req, id) {
     return new Promise(async (resolve, reject) => {
+        var formidable = require('formidable');
+        var form = formidable({ multiples: true });
+        form.uploadDir = "./img";//文件保存路径
         var db = await index('./db.json');
         var json = JSON.parse(db);
-        json[id - 1].name = body.name;
-        json[id - 1].nengli = body.nengli;
-        json[id - 1].jituan = body.jituan;
-        console.log(json)
-        var result = await writeFile('./db.json', JSON.stringify(json));
-        resolve(result?'<a href="/">返回首页</a>':'<a href="/">修改失败返回首页</a>')
+        form.parse(req, async(err, fields, files) => {
+            // res.writeHead(200, { 'content-type': 'application/json' });
+            // console.log(fields)//参数{ name: '路飞', nengli: '超人系橡胶果实', jituan: '草帽海贼团程序' }
+            // console.log(files)//上传文件信息
+          fs.rename(files.img.path, './img/' + files.img.name,async(err) => {
+                if (err) throw err;
+                json[id - 1].name = fields.name;
+                json[id - 1].nengli = fields.nengli;
+                json[id - 1].jituan = fields.jituan;
+                json[id - 1].img = '/img/' + files.img.name;
+                var result = await writeFile('./db.json', JSON.stringify(json));
+                resolve(result?"<script>alert('修改成功');location.href='/'</script>":"<script>alert('修改失败');location.href='/editupdata?id='"+id+"</script>")
+            });
+           
+        });
     })
 }
 module.exports = {
