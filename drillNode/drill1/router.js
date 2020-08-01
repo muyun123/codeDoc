@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
             body +=chunk;
         })
         req.on('end',async()=>{
+            console.log(body)
             res.writeHead(200, {
                 'Content-Type': 'text/html;charset=UTF-8' });
             var html = await editupdata(myURL.query.id,querystring.parse(body))

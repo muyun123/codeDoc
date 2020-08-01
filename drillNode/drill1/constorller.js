@@ -98,7 +98,7 @@ var editupdata = function (id, body) {
         json[id - 1].name = body.name;
         json[id - 1].nengli = body.nengli;
         json[id - 1].jituan = body.jituan;
-        console.log(json)
+        // console.log(json)
         var result = await writeFile('./db.json', JSON.stringify(json));
         resolve(result?'<a href="/">返回首页</a>':'<a href="/">修改失败返回首页</a>')
     })
