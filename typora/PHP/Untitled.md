@@ -1,0 +1,121 @@
+- GD 和图像处理 函数
+  - [gd_info](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.gd-info.html) — 取得当前安装的 GD 库的信息
+  - [getimagesize](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.getimagesize.html) — 取得图像大小
+  - [getimagesizefromstring](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.getimagesizefromstring.html) — 从字符串中获取图像尺寸信息
+  - [image_type_to_extension](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.image-type-to-extension.html) — 取得图像类型的文件后缀
+  - [image_type_to_mime_type](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.image-type-to-mime-type.html) — 取得 getimagesize，exif_read_data，exif_thumbnail，exif_imagetype     所返回的图像类型的 MIME 类型
+  - [image2wbmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.image2wbmp.html) — 以 WBMP 格式将图像输出到浏览器或文件
+  - [imageaffine](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageaffine.html) — 返回经过仿射变换后的图像，剪切区域可选
+  - [imageaffinematrixconcat](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageaffinematrixconcat.html) — Concatenate two affine transformation matrices
+  - [imageaffinematrixget](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageaffinematrixget.html) — Get an affine transformation matrix
+  - [imagealphablending](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagealphablending.html) — 设定图像的混色模式
+  - [imageantialias](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageantialias.html) — 是否使用抗锯齿（antialias）功能
+  - [imagearc](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagearc.html) — 画椭圆弧
+  - [imagebmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagebmp.html) — Output a BMP image to browser or file
+  - [imagechar](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagechar.html) — 水平地画一个字符
+  - [imagecharup](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecharup.html) — 垂直地画一个字符
+  - [imagecolorallocate](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorallocate.html) — 为一幅图像分配颜色
+  - [imagecolorallocatealpha](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorallocatealpha.html) — 为一幅图像分配颜色 + alpha
+  - [imagecolorat](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorat.html) — 取得某像素的颜色索引值
+  - [imagecolorclosest](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorclosest.html) — 取得与指定的颜色最接近的颜色的索引值
+  - [imagecolorclosestalpha](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorclosestalpha.html) — 取得与指定的颜色加透明度最接近的颜色
+  - [imagecolorclosesthwb](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorclosesthwb.html) — 取得与给定颜色最接近的色度的黑白色的索引
+  - [imagecolordeallocate](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolordeallocate.html) — 取消图像颜色的分配
+  - [imagecolorexact](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorexact.html) — 取得指定颜色的索引值
+  - [imagecolorexactalpha](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorexactalpha.html) — 取得指定的颜色加透明度的索引值
+  - [imagecolormatch](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolormatch.html) — 使一个图像中调色板版本的颜色与真彩色版本更能匹配
+  - [imagecolorresolve](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorresolve.html) — 取得指定颜色的索引值或有可能得到的最接近的替代值
+  - [imagecolorresolvealpha](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorresolvealpha.html) — 取得指定颜色 + alpha 的索引值或有可能得到的最接近的替代值
+  - [imagecolorset](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorset.html) — 给指定调色板索引设定颜色
+  - [imagecolorsforindex](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorsforindex.html) — 取得某索引的颜色
+  - [imagecolorstotal](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolorstotal.html) — 取得一幅图像的调色板中颜色的数目
+  - [imagecolortransparent](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecolortransparent.html) — 将某个颜色定义为透明色
+  - [imageconvolution](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageconvolution.html) — 用系数 div 和 offset 申请一个 3x3 的卷积矩阵
+  - [imagecopy](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecopy.html) — 拷贝图像的一部分
+  - [imagecopymerge](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecopymerge.html) — 拷贝并合并图像的一部分
+  - [imagecopymergegray](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecopymergegray.html) — 用灰度拷贝并合并图像的一部分
+  - [imagecopyresampled](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecopyresampled.html) — 重采样拷贝部分图像并调整大小
+  - [imagecopyresized](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecopyresized.html) — 拷贝部分图像并调整大小
+  - [imagecreate](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreate.html) — 新建一个基于调色板的图像
+  - [imagecreatefrombmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefrombmp.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromgd2](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromgd2.html) — 从 GD2 文件或 URL 新建一图像
+  - [imagecreatefromgd2part](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromgd2part.html) — 从给定的 GD2 文件或 URL 中的部分新建一图像
+  - [imagecreatefromgd](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromgd.html) — 从 GD 文件或 URL 新建一图像
+  - [imagecreatefromgif](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromgif.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromjpeg](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromjpeg.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefrompng](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefrompng.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromstring](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromstring.html) — 从字符串中的图像流新建一图像
+  - [imagecreatefromwbmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromwbmp.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromwebp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromwebp.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromxbm](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromxbm.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatefromxpm](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatefromxpm.html) — 由文件或 URL 创建一个新图象。
+  - [imagecreatetruecolor](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecreatetruecolor.html) — 新建一个真彩色图像
+  - [imagecrop](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecrop.html) — Crop an image to the given rectangle
+  - [imagecropauto](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagecropauto.html) — Crop an image automatically using one of the available modes
+  - [imagedashedline](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagedashedline.html) — 画一虚线
+  - [imagedestroy](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagedestroy.html) — 销毁一图像
+  - [imageellipse](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageellipse.html) — 画一个椭圆
+  - [imagefill](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefill.html) — 区域填充
+  - [imagefilledarc](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilledarc.html) — 画一椭圆弧且填充
+  - [imagefilledellipse](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilledellipse.html) — 画一椭圆并填充
+  - [imagefilledpolygon](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilledpolygon.html) — 画一多边形并填充
+  - [imagefilledrectangle](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilledrectangle.html) — 画一矩形并填充
+  - [imagefilltoborder](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilltoborder.html) — 区域填充到指定颜色的边界为止
+  - [imagefilter](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefilter.html) — 对图像使用过滤器
+  - [imageflip](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageflip.html) — Flips an image using a given mode
+  - [imagefontheight](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefontheight.html) — 取得字体高度
+  - [imagefontwidth](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefontwidth.html) — 取得字体宽度
+  - [imageftbbox](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageftbbox.html) — 给出一个使用 FreeType 2 字体的文本框
+  - [imagefttext](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagefttext.html) — 使用 FreeType 2 字体将文本写入图像
+  - [imagegammacorrect](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegammacorrect.html) — 对 GD 图像应用 gamma 修正
+  - [imagegd2](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegd2.html) — 将 GD2 图像输出到浏览器或文件
+  - [imagegd](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegd.html) — 将 GD 图像输出到浏览器或文件
+  - [imagegetclip](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegetclip.html) — Get the clipping rectangle
+  - [imagegif](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegif.html) — 输出图象到浏览器或文件。
+  - [imagegrabscreen](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegrabscreen.html) — Captures the whole screen
+  - [imagegrabwindow](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagegrabwindow.html) — Captures a window
+  - [imageinterlace](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageinterlace.html) — 激活或禁止隔行扫描
+  - [imageistruecolor](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageistruecolor.html) — 检查图像是否为真彩色图像
+  - [imagejpeg](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagejpeg.html) — 输出图象到浏览器或文件。
+  - [imagelayereffect](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagelayereffect.html) — 设定 alpha 混色标志以使用绑定的 libgd 分层效果
+  - [imageline](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageline.html) — 画一条线段
+  - [imageloadfont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageloadfont.html) — 载入一新字体
+  - [imageopenpolygon](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageopenpolygon.html) — Draws an open polygon
+  - [imagepalettecopy](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepalettecopy.html) — 将调色板从一幅图像拷贝到另一幅
+  - [imagepalettetotruecolor](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepalettetotruecolor.html) — Converts a palette based image to true color
+  - [imagepng](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepng.html) — 以 PNG 格式将图像输出到浏览器或文件
+  - [imagepolygon](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepolygon.html) — 画一个多边形
+  - [imagepsbbox](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsbbox.html) — 给出一个使用 PostScript Type1 字体的文本方框
+  - [imagepsencodefont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsencodefont.html) — 改变字体中的字符编码矢量
+  - [imagepsextendfont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsextendfont.html) — 扩充或精简字体
+  - [imagepsfreefont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsfreefont.html) — 释放一个 PostScript Type 1 字体所占用的内存
+  - [imagepsloadfont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsloadfont.html) — 从文件中加载一个 PostScript Type 1 字体
+  - [imagepsslantfont](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepsslantfont.html) — 倾斜某字体
+  - [imagepstext](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagepstext.html) — 用 PostScript Type1 字体把文本字符串画在图像上
+  - [imagerectangle](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagerectangle.html) — 画一个矩形
+  - [imageresolution](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imageresolution.html) — Get or set the resolution of the image
+  - [imagerotate](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagerotate.html) — 用给定角度旋转图像
+  - [imagesavealpha](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesavealpha.html) — 设置标记以在保存 PNG 图像时保存完整的 alpha 通道信息（与单一透明色相反）
+  - [imagescale](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagescale.html) — Scale an image using the given new width and height
+  - [imagesetbrush](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetbrush.html) — 设定画线用的画笔图像
+  - [imagesetclip](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetclip.html) — Set the clipping rectangle
+  - [imagesetinterpolation](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetinterpolation.html) — Set the interpolation method
+  - [imagesetpixel](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetpixel.html) — 画一个单一像素
+  - [imagesetstyle](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetstyle.html) — 设定画线的风格
+  - [imagesetthickness](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesetthickness.html) — 设定画线的宽度
+  - [imagesettile](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesettile.html) — 设定用于填充的贴图
+  - [imagestring](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagestring.html) — 水平地画一行字符串
+  - [imagestringup](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagestringup.html) — 垂直地画一行字符串
+  - [imagesx](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesx.html) — 取得图像宽度
+  - [imagesy](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagesy.html) — 取得图像高度
+  - [imagetruecolortopalette](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagetruecolortopalette.html) — 将真彩色图像转换为调色板图像
+  - [imagettfbbox](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagettfbbox.html) — 取得使用 TrueType 字体的文本的范围
+  - [imagettftext](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagettftext.html) — 用 TrueType 字体向图像写入文本
+  - [imagetypes](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagetypes.html) — 返回当前 PHP 版本所支持的图像类型
+  - [imagewbmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagewbmp.html) — 以 WBMP 格式将图像输出到浏览器或文件
+  - [imagewebp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagewebp.html) — 将 WebP 格式的图像输出到浏览器或文件
+  - [imagexbm](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.imagexbm.html) — 将 XBM 图像输出到浏览器或文件
+  - [iptcembed](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.iptcembed.html) — 将二进制 IPTC 数据嵌入到一幅 JPEG 图像中
+  - [iptcparse](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.iptcparse.html) — 将二进制 IPTC 块解析为单个标记
+  - [jpeg2wbmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.jpeg2wbmp.html) — 将 JPEG 图像文件转换为 WBMP 图像文件
+  - [png2wbmp](mk:@MSITStore:C:\Users\muyun153\Downloads\Compressed\php7.3.8手册（官网）\php7.3.8（官网下载）.chm::/res/function.png2wbmp.html) — 将 PNG 图像文件转换为 WBMP 图像文件
