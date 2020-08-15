@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-var utils  = require('./utils.js') 
+var utils = require('./utils.js')
 var option = {
     headless: true
 }
@@ -16,16 +16,23 @@ pupInit(ele)
 */
 async function pupInit(ele) {
     var browser = await puppeteer.launch(option);
-    var arr = await getTit(browser,ele);
-    for(var i in arr){
-       var obj =  await article(browser,arr[i]);
-      arr[i] = Object.assign(arr[i],obj)
-      if(obj.down=='')continue;
-      await lanZouDown(browser, obj.down)
-      await timeOut();
+    
+    var arr = await getTit(browser, ele);
+    for (var i in arr) {
+        var obj = await article(browser, arr[i].url);
+        arr[i] = Object.assign(arr[i], obj)
+        if (obj.down == '') continue;
+        await wfile(arr[i])
+        await lanZouDown(browser, obj.down)
+        await timeOut();
     }
-    await browser.close();
+    // await browser.close();
     // console.log(arr)
+}
+async function wfile(arr){
+    var dir = await creactDir();
+    await utils.writeFile(dir+arr.title,arr.text)
+    return;
 }
 /*
 *<获取最新文章>
@@ -33,21 +40,25 @@ async function pupInit(ele) {
 *@param[el]
 */
 async function getTit(browser, el) {
+
     var page = await browser.newPage();
     await page.goto(el.url);
     var arr = await page.$$eval(el.el, (divs) => {
         var arr = [];
-            for (var item of divs) {
-                var obj = {};
+        for (var item of divs) {
+            var obj = {};
+            // console.log(item.children[2].style.color=='')
+            if (item.children[2].style.color=='') {
                 obj.title = item.children[2].title;
                 obj.url = item.children[2].href;
                 obj.time = item.children[0].innerText;
                 arr.unshift(obj)
             }
-        
+        }
+
         return arr;
     });
-    page.close();
+    // page.close();
     return arrFilter(arr)
 }
 /*
@@ -55,24 +66,24 @@ async function getTit(browser, el) {
 *@param[browser]
 *@param[url][文章页地址]
 */
-async function article(browser, arr) {
+async function article(browser, url) {
     var page = await browser.newPage();
-    await page.goto(arr.url, { waitUntil: 'networkidle0' });
+    await page.goto(url, { waitUntil: 'networkidle0' });
+    var dir = await creactDir();
     try {
-        var down = await page.$eval(".art-content", async(divs) => {
+        var down = await page.$eval(".art-content", async (divs) => {
             var lanzou = /www\.lanzoux\.com\/[\w]+/;
             var obj = {
                 text: divs.innerText,
-                down: lanzou.test(divs.innerText)?'https://' + lanzou.exec(divs.innerText)[0]:''
+                down: lanzou.test(divs.innerText) ? 'https://' + lanzou.exec(divs.innerText)[0] : ''
             }
             return obj;
         });
-        await utils.writeFile(arr.title,down.text);
+
     } catch (error) {
-        console.log(error)
         return '';
     }
-    
+
     await timeOut();
     page.close()
     return down;
@@ -96,11 +107,11 @@ async function lanZouDown(browser, url) {
         var lanZouUrl = await page.$eval("#go a", (a) => {
             return a.href
         });
-        getdown(browser,lanZouUrl,title)
+        getdown(browser, lanZouUrl, title)
         // await pipeDown(lanZouUrl,title);
         page.close()
     } catch (error) {
-        
+
     }
 }
 /*
@@ -108,10 +119,10 @@ async function lanZouDown(browser, url) {
 *@param[url][下载地址]
 */
 async function getdown(browser, url, title) {
-    console.log(title+"获取地址")
+    console.log(title + "获取地址")
     var page = await browser.newPage();
     await page.setRequestInterception(true);
-    page.on('request',async interceptedRequest => {
+    page.on('request', async interceptedRequest => {
         var reg = /\.baidupan\.com\//;
         var reg1 = /vip\.d0/;
         if (reg.test(interceptedRequest.url()) && !reg1.test(interceptedRequest.url())) {
@@ -119,7 +130,7 @@ async function getdown(browser, url, title) {
             // console.log(reg.test(interceptedRequest.url()))
             // console.log(interceptedRequest.url())
             await pipeDown(interceptedRequest.url(), title)
-        }else {
+        } else {
             interceptedRequest.continue();
         }
 
@@ -135,15 +146,15 @@ async function getdown(browser, url, title) {
 *@param[url][下载地址]
 */
 async function pipeDown(url, title) {
-    console.log(title+"下载")
+    console.log(title + "下载")
     var https = require('https')
     var fs = require('fs')
     var dir = await creactDir();
-    var ws = fs.createWriteStream(dir+title);
-    https.get(url,async (res) => {
+    var ws = fs.createWriteStream(dir + title);
+    https.get(url, async (res) => {
         // console.log(res.headers['content-length'])
         // res.pipe(fs.createWriteStream('./apk/'+title));
-       await utils.pipe(res,ws)
+        await utils.pipe(res, ws)
     }).on('error', (e) => {
         console.error(`出现错误: ${e.message}`);
     });
@@ -203,10 +214,10 @@ function timeOut(t = 5000) {
         }, t);
     })
 }
-async function creactDir(){
-    var isDir = await utils.openDir('./down/'+ttime());
-    if(!isDir){
-        await utils.mkDir('./down/'+ttime());
+async function creactDir() {
+    var isDir = await utils.openDir('./down/' + ttime());
+    if (!isDir) {
+        await utils.mkDir('./down/' + ttime());
     }
-    return './down/'+ttime()+'/';
+    return './down/' + ttime() + '/';
 }

@@ -1,13 +1,25 @@
 var fs = require('fs');
-var readline = require('readline');
-const { resolve } = require('path');
 module.exports = {
     writeFile(title, data) {
         return new Promise((resolve, reject) => {
             fs.writeFile(title + '.txt', data, 'utf8', (err) => {
-                if (err) console.log('保存失败');
+                if (err) console.log(title+'保存失败');
                 console.log(title+'文件已生成');
             });
+            // let rs = fs.createReadStream(data, {     
+            //     flags: 'r',        
+            //     encoding: 'utf-8',        
+            //     highWaterMark: 5
+            // })       
+            // let ws = fs.createWriteStream(title + '.txt',{
+            //     highWaterMark:1
+            // })
+            // rs.on('data',function(chunk){
+            //     ws.write(chunk)
+            // })
+            // rs.on('end', function () {
+            //     console.log(title+'文件已生成');
+            // })
         })
     },
     mkDir(dir) {
@@ -23,7 +35,7 @@ module.exports = {
             var i = 0;
             res.on('data', (chunk) => {
                 i += chunk.length
-                process.stdout.write(i, 'utf-8');
+                // process.stdout.write(i, 'utf-8');
                 ws.write(chunk)
             })
             res.on('end', () => {
