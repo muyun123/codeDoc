@@ -1,0 +1,17 @@
+{
+  "name": "zongheziyuan",
+  "version": "1.0.0",
+  "main": "pop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^5.2.1",
+    "readline": "^1.3.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

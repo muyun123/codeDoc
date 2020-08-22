@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script id="tpl" type="x-template">
+        <div>
+            <div>分离的HTML</div>
+        </div>
+    </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    (()=>{       
+        var vm = new Vue({
+            el:"#app",
+            template:'#tpl'
+        })
+    })()
+</script>
+</html>

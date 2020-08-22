@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="fm" enctype="multipart/form-data">
+        姓名：<input type="text" name="username" id="username"><br>
+        <input type="file" name="file" id=""><br>
+    </form>
+    <button id="btn">提交</button>
+    
+</body>
+<script>
+    (() => {
+        var username = document.getElementById('username');
+        var btn = document.getElementById('btn')
+        btn.onclick = function () {
+            var ajax = new XMLHttpRequest();
+            // ajax.open("GET", "/get?username=" + username.value, true);
+            var f = document.getElementById('fm')
+            var fd = new FormData(f);
+            // console.log(fd)
+            ajax.open("post", "http://localhost:8999/file");
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    var data = ajax.responseText;
+                    console.log(data)
+                }
+            }
+            
+            // ajax.setRequestHeader("Content-type","multipart/form-data");
+            ajax.send(fd);
+        }
+
+    })()
+</script>
+
+</html>
