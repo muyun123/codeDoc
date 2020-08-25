@@ -16,22 +16,40 @@ pupInit(ele)
 */
 async function pupInit(ele) {
     var browser = await puppeteer.launch(option);
-    
+    await creactDir();
     var arr = await getTit(browser, ele);
     for (var i in arr) {
         var obj = await article(browser, arr[i].url);
         arr[i] = Object.assign(arr[i], obj)
         if (obj.down == '') continue;
-        await wfile(arr[i])
+        // await wfile(arr)
         await lanZouDown(browser, obj.down)
         await timeOut();
     }
-    // await browser.close();
+    await browser.close();
+    await wfile(arr)
     // console.log(arr)
 }
 async function wfile(arr){
     var dir = await creactDir();
-    await utils.writeFile(dir+arr.title,arr.text)
+    var txt = '';
+    for(var item of arr){
+        txt+=item.title+'\r\n'+'\r\n'+'\r\n';
+        txt+= item.text;
+        txt+=item.title+'\r\n'+'\r\n'+'\r\n';
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        txt+='\r\n'+'\r\n'+'\r\n';
+    }
+    // console.log(txt)
+    await utils.writeFile(dir+"txt",txt)
     return;
 }
 /*
@@ -69,7 +87,7 @@ async function getTit(browser, el) {
 async function article(browser, url) {
     var page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle0' });
-    var dir = await creactDir();
+    // var dir = await creactDir();
     try {
         var down = await page.$eval(".art-content", async (divs) => {
             var lanzou = /www\.lanzoux\.com\/[\w]+/;
@@ -97,8 +115,8 @@ async function lanZouDown(browser, url) {
     try {
         var page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle0' });
-        var title = await page.$eval("#b", (title) => {
-            return title.innerText
+        var title = await page.$eval("title", (title) => {
+            return title.innerText.split(" - ")[0];
         });
         var ifram = await page.$eval("iframe", (href) => {
             return href.src
@@ -107,6 +125,9 @@ async function lanZouDown(browser, url) {
         var lanZouUrl = await page.$eval("#go a", (a) => {
             return a.href
         });
+        if(title==''){
+            return
+        }
         getdown(browser, lanZouUrl, title)
         // await pipeDown(lanZouUrl,title);
         page.close()
@@ -146,7 +167,7 @@ async function getdown(browser, url, title) {
 *@param[url][下载地址]
 */
 async function pipeDown(url, title) {
-    console.log(title + "下载")
+    console.log(title + "开始下载")
     var https = require('https')
     var fs = require('fs')
     var dir = await creactDir();
@@ -154,7 +175,7 @@ async function pipeDown(url, title) {
     https.get(url, async (res) => {
         // console.log(res.headers['content-length'])
         // res.pipe(fs.createWriteStream('./apk/'+title));
-        await utils.pipe(res, ws)
+        await utils.pipe(res, ws, title)
     }).on('error', (e) => {
         console.error(`出现错误: ${e.message}`);
     });
