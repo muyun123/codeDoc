@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jquery实现鼠标悬停在图片上的放大效果</title>
+<link rel="stylesheet" type="text/css" href="css/lanrenzhijia.css" />
+<style type="text/css">
+
+	ul.thumb li img.big{
+		margin-top: -110px;
+		margin-left: -110px;
+		top: 50%;
+		left: 50%;
+		width: 174px; 
+		height: 174px;
+		padding: 20px;
+		z-index:10;
+	}
+
+</style>
+</head>
+<!-- The JavaScript -->
+<script type="text/javascript" src="js/jquery-latest.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(){
+	//Larger thumbnail preview 
+	$("ul.thumb li").hover(function() {
+		$(this).find('img').addClass('big')
+	} , function() {
+		$(this).find('img').removeClass('big');
+	});
+
+	//Swap Image on Click
+	$("img").click(function() {
+		var mainImage = $(this).attr("big"); //Find Image Name
+		$("#main_view img").attr("src", mainImage);
+		return false;		
+	});
+});
+</script>
+
+<body>
+   <div id="col">
+        <ul class="thumb">
+            <li><img src="images/thumb1.jpg" big="images/main_image1.jpg" /></li>
+            <li><img src="images/thumb2.jpg" big="images/main_image2.jpg" /></li>
+            <li><img src="images/thumb3.jpg" big="images/main_image3.jpg" /></li>
+            <li><img src="images/thumb4.jpg" big="images/main_image4.jpg" /></li>
+            <li><img src="images/thumb5.jpg" big="images/main_image5.jpg" /></li>
+            <li><img src="images/thumb6.jpg" big="images/main_image6.jpg" /></li>
+        </ul>
+		<div id="main_view">
+		    <img src="images/main_image1.jpg">
+		</div>
+   </div>
+</body>
+</html>
