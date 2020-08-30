@@ -16,29 +16,41 @@ pupInit(ele)
 */
 async function pupInit(ele) {
     var browser = await puppeteer.launch(option);
-
+    await creactDir();
     var arr = await getTit(browser, ele);
     for (var i in arr) {
         var obj = await article(browser, arr[i].url);
         arr[i] = Object.assign(arr[i], obj)
         if (obj.down == '') continue;
-
+        // await wfile(arr)
         await lanZouDown(browser, obj.down)
         await timeOut();
     }
-    // await browser.close();
+    await browser.close();
+    await wfile(arr)
     // console.log(arr)
-    wfile(arr)
 }
-function wfile(arr) {
-    var str = '';
-    // var reg =/[]/;
-    for (var item of arr) {
-        console.log(item.replace(/(<br>)/g, "\r\n"));
+async function wfile(arr){
+    var dir = await creactDir();
+    var txt = '';
+    for(var item of arr){
+        txt+=item.title+'\r\n'+'\r\n'+'\r\n';
+        txt+= item.text;
+        txt+=item.title+'\r\n'+'\r\n'+'\r\n';
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        for(var i=0;i<40;i++){
+            txt+="==="
+        }
+        txt+='\r\n'+'\r\n'+'\r\n';
     }
-    // var dir = await creactDir();
-    // await utils.writeFile(dir+arr.title,arr.text)
-    // return;
+    // console.log(txt)
+    await utils.writeFile(dir+"txt",txt)
+    return;
 }
 /*
 *<获取最新文章>
@@ -48,21 +60,13 @@ function wfile(arr) {
 async function getTit(browser, el) {
 
     var page = await browser.newPage();
-    try {
-        await page.goto(el.url, { timeout: 0, waitUntil: 'networkidle0' });
-    } catch (error) {
-        for (var i = 0; i < 5; i++) {
-            var uu = await page.goto(el.url, { timeout: 0, waitUntil: 'networkidle0' });
-            if (uu == url) break;
-            await timeOut(10);
-        }
-    }
+    await page.goto(el.url);
     var arr = await page.$$eval(el.el, (divs) => {
         var arr = [];
         for (var item of divs) {
             var obj = {};
             // console.log(item.children[2].style.color=='')
-            if (item.children[2].style.color == '') {
+            if (item.children[2].style.color=='') {
                 obj.title = item.children[2].title;
                 obj.url = item.children[2].href;
                 obj.time = item.children[0].innerText;
@@ -72,11 +76,7 @@ async function getTit(browser, el) {
 
         return arr;
     });
-    page.on('requestfailed', request => {
-        console.log(request.url() + ' ' + request.failure().errorText);
-        return;
-    })
-    page.close();
+    // page.close();
     return arrFilter(arr)
 }
 /*
@@ -86,17 +86,8 @@ async function getTit(browser, el) {
 */
 async function article(browser, url) {
     var page = await browser.newPage();
-    try {
-        await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
-    } catch (error) {
-        for (var i = 0; i < 5; i++) {
-            var uu = await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
-            if (uu == url) break;
-            await timeOut(10);
-        }
-    }
-
-    var dir = await creactDir();
+    await page.goto(url, { waitUntil: 'networkidle0' });
+    // var dir = await creactDir();
     try {
         var down = await page.$eval(".art-content", async (divs) => {
             var lanzou = /www\.lanzoux\.com\/[\w]+/;
@@ -123,33 +114,20 @@ async function article(browser, url) {
 async function lanZouDown(browser, url) {
     try {
         var page = await browser.newPage();
-        try {
-            await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
-        } catch (error) {
-            for (var i = 0; i < 5; i++) {
-                var uu = await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
-                if (uu == url) break;
-                await timeOut(10);
-            }
-        }
-        var title = await page.$eval("#b", (title) => {
-            return title.innerText
+        await page.goto(url, { waitUntil: 'networkidle0' });
+        var title = await page.$eval("title", (title) => {
+            return title.innerText.split(" - ")[0];
         });
         var ifram = await page.$eval("iframe", (href) => {
             return href.src
         });
-        try {
-            await page.goto(ifram, { timeout: 0, waitUntil: 'networkidle0' });
-        } catch (error) {
-            for (var i = 0; i < 5; i++) {
-                var uu = await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
-                if (uu == url) break;
-                await timeOut(10);
-            }
-        }
+        await page.goto(ifram, { waitUntil: 'networkidle0' });
         var lanZouUrl = await page.$eval("#go a", (a) => {
             return a.href
         });
+        if(title==''){
+            return
+        }
         getdown(browser, lanZouUrl, title)
         // await pipeDown(lanZouUrl,title);
         page.close()
@@ -179,7 +157,7 @@ async function getdown(browser, url, title) {
 
     });
     try {
-        await page.goto(url, { timeout: 0, waitUntil: 'networkidle0' });
+        await page.goto(url, { waitUntil: 'networkidle0' });
     } catch (error) {
         page.close()
     }
@@ -189,7 +167,7 @@ async function getdown(browser, url, title) {
 *@param[url][下载地址]
 */
 async function pipeDown(url, title) {
-    console.log(title + "下载")
+    console.log(title + "开始下载")
     var https = require('https')
     var fs = require('fs')
     var dir = await creactDir();
@@ -197,7 +175,7 @@ async function pipeDown(url, title) {
     https.get(url, async (res) => {
         // console.log(res.headers['content-length'])
         // res.pipe(fs.createWriteStream('./apk/'+title));
-        await utils.pipe(res, ws)
+        await utils.pipe(res, ws, title)
     }).on('error', (e) => {
         console.error(`出现错误: ${e.message}`);
     });
@@ -221,7 +199,7 @@ function arrFilter(arr) {
 function ttime() {
     var time = new Date();
     var month = time.getMonth() + 1;
-    var day = time.getDate();
+    var day = time.getDate()-1;
     return odd(month) + '-' + odd(day);
 }
 function odd(a) {
@@ -250,7 +228,7 @@ Date.prototype.format = function (format) {
 /*
 *<延时>
 */
-function timeOut(t = 5000) {
+function timeOut(t = 30000) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve();
