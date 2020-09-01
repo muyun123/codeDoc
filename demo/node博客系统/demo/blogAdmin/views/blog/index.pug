@@ -1,11 +1,27 @@
-extends ../layout
+extends head
 
 block content
-  .sidebar
-    block main
-      .container
-        div(class="row")
-          div(class="col-sm") One of three columns
-          div(class="col-sm") One of three columns
-          div(class="col-sm" ) One of three columns
-  
+  #splash
+    //- div #{data}
+    each val in data
+      if !val.img
+        div(class="col3 left",style="margin:0 1% 20px 1%")
+          h2(class="label label-orange") #{val.title}
+          p(class="quiet large") #{val.time}
+          p
+            img(src="images/sample-event.jpg",width="240",height="80",alt="",class="bordered")
+          p #{val.content.substring(0,35)} ...
+          p
+            a(href="/new?id="+val.id,class="more") 阅读内容 »
+      else
+        div(class="col3 left",style="margin:0 1% 20px 1%")
+          h2(class="label label-orange") #{val.title}
+          p(class="quiet large") #{val.time}
+          p
+            img(src=val.img,width="240",height="80",alt="",class="bordered")
+          p #{val.content.substring(0,35)} ...
+          p
+            a(href="/new?id="+val.id,class="more") 阅读内容 »
+    div(class="clearer") &nbsp;
+  include footer
+
