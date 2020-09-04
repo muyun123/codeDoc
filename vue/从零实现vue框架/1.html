@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="app">
         <input type="text" v-module="msg">
@@ -12,11 +14,11 @@
         <h1 v-html="msg"></h1>
         <button onclick="changEvent">修改msg</button>
     </div>
-    
+
 </body>
 <script>
-    class Vue{
-        constructor(options){
+    class Vue {
+        constructor(options) {
             this.$el = document.querySelector(options.el);
             this.$options = options
             this.$watchEvent = {}
@@ -25,122 +27,124 @@
             this.proxyData()
             //劫持事件
             this.observe()
-            
+
             this.compile()
         }
-        proxyData(){    
-            for(let key in this.$options.data){
+        proxyData() {
+            for (let key in this.$options.data) {
                 //给当前对象添加key属性
-                Object.defineProperty(this,key,{
-                    configurable:false,
-                    enumerable:true,
-                    set(val){
+                Object.defineProperty(this, key, {
+                    configurable: false,
+                    enumerable: true,
+                    set(val) {
                         // console.log("set1")
                         this.$options.data[key] = val;
                     },
-                    get(){
+                    get() {
                         return this.$options.data[key];
                     }
                 })
             }
         }
-        
-        observe(){
-            for(let key in this.$options.data){
+
+        observe() {
+            for (let key in this.$options.data) {
                 let value = this.$options.data[key]
                 let that = this
                 //给当前对象添加key属性
-                Object.defineProperty( this.$options.data,key,{
-                    configurable:false,
-                    enumerable:true,
-                    set(val){
+                Object.defineProperty(this.$options.data, key, {
+                    configurable: false,
+                    enumerable: true,
+                    set(val) {
                         value = val;
-                        if(that.$watchEvent[key]){
+                        if (that.$watchEvent[key]) {
                             // console.log("set2")
                             // console.log(that.$watchEvent)
-                            that.$watchEvent[key].forEach((item,index) => {
+                            that.$watchEvent[key].forEach((item, index) => {
                                 item.update();
                             });
                         }
                     },
-                    get(){
+                    get() {
                         return value
                     }
                 })
             }
         }
-        compile(){
+        compile() {
             // console.log("触发compile");
             var that = this
-            this.$el.childNodes.forEach((node,index)=>{
-                if(node.nodeType == 1){
-                    if(node.hasAttribute("v-html")){
+            this.$el.childNodes.forEach((node, index) => {
+                if (node.nodeType == 1) {
+                    if (node.hasAttribute("v-html")) {
                         let vmKey = node.getAttribute("v-html").trim()
                         node.innerHTML = this[vmKey]
-                        let watcher = new Watch(this,vmKey,node,"innerHTML")
-                        if(this.$watchEvent[vmKey]){
+                        let watcher = new Watch(this, vmKey, node, "innerHTML")
+                        if (this.$watchEvent[vmKey]) {
                             this.$watchEvent[vmKey].push(watcher)
-                        }else{
+                        } else {
                             this.$watchEvent[vmKey] = [];
                             this.$watchEvent[vmKey].push(watcher)
                         }
-                        
+
                         //删除节点属性
                         node.removeAttribute('v-html')
                     }
-                    if(node.hasAttribute("v-module")){
-                        
-                        let vmKey = node.getAttribute("v-module").trim()
-                        
-                        node.value= this[vmKey]
+                    if (node.hasAttribute("v-module")) {
 
-                        node.oninput=function(){
-                            let val =  node.value;
-                            that[vmKey] = val;
-                            // console.log(that[vmKey])
+                        let vmKey = node.getAttribute("v-module").trim()//对应data声明的变量
+
+                        node.value = this[vmKey]
+                        if (this.hasOwnProperty(vmKey)) {
+                            node.oninput = function () {
+                                let val = node.value;
+                                that[vmKey] = val;
+                                console.log(that[vmKey])
+                            }
+
+                            let watcher = new Watch(this, vmKey, node, "value")
+                            if (this.$watchEvent[vmKey]) {
+                                this.$watchEvent[vmKey].push(watcher)
+                            } else {
+                                this.$watchEvent[vmKey] = [];
+                                this.$watchEvent[vmKey].push(watcher)
+                            }
                         }
 
-                        let watcher = new Watch(this,vmKey,node,"value")
-                        if(this.$watchEvent[vmKey]){
-                            this.$watchEvent[vmKey].push(watcher)
-                        }else{
-                            this.$watchEvent[vmKey] = [];
-                            this.$watchEvent[vmKey].push(watcher)
-                        }
-                        
+
                         //删除节点属性
-                        node.removeAttribute('v-html')
+                        node.removeAttribute('v-module')
                     }
                 }
             })
         }
     }
-    class Watch{
-        constructor(vm,key,node,Attr,nodeType){
+    class Watch {
+        constructor(vm, key, node, Attr, nodeType) {
             //实例化的节点对象
             this.vm = vm
             //绑定vm触发的属性
             this.key = key
             // vm[key]绑定的节点
             this.node = node
-            // vmj节点HTML要绑定的属性
+            // vm节点HTML要绑定的属性
             this.attr = Attr
             this.nodeType = nodeType
 
         }
-        update(){
+        update() {
             this.node[this.attr] = this.vm[this.key]
         }
     }
 </script>
 <script>
     var option = {
-        el:"#app",
-        data:{
-            msg:"hello word"
+        el: "#app",
+        data: {
+            msg: "hello word"
         },
-        methods:{
-            changEvent(){
+        methods: {
+            changEvent() {
                 this.msg = "hello vue";
             }
         }
@@ -148,4 +152,5 @@
     var app = new Vue(option)
     console.log(app)
 </script>
+
 </html>
