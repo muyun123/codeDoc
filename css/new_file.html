@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			#box1{
+				width:200px;
+				height: 200px;
+				/* color: bisque; */
+				margin: 100px auto;
+				/* transform: rotateY(45deg); */
+				position: relative;
+				animation:run 10s infinite;
+				transform-style:preserve-3d;
+			}
+			li{
+				width: 100px;
+				height: 100px;
+				line-height: 2;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				perspective:100px;
+				box-shadow: 0 0 100px 0px currentColor;
+			}
+			.list1{
+				color: aliceblue;
+			}
+			.list2{
+				color: aqua;
+				transform: translate3d(0,50px,-50px) rotateX(90deg);
+			}
+			.list3{
+				color: palevioletred;
+				transform: translate3d(0,-50px,-50px) rotateX(90deg);
+			}
+			.list4{
+				color: plum;
+				transform: translate3d(-50px,0,-50px) rotateY(90deg);
+			}
+			.list5{
+				color: greenyellow;
+				transform: translate3d(50px,0,-50px) rotateY(90deg);
+			}
+			.list6{
+				color: crimson;
+				transform: translate3d(0,0,-100px);
+			}
+			@keyframes run {
+				 to {
+				        transform: rotate3d(1, 1, 1, 65deg);
+				    }
+				
+				    from {
+				        transform: rotate3d(1, 1, 1, 360deg);
+				    }
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="box1">
+			<li class="list1">1</li>
+			<li class="list2">2</li>
+			<li class="list3">3</li>
+			<li class="list4">4</li>
+			<li class="list5">5</li>
+			<li class="list6">6</li>
+		</ul>
+	</body>
+</html>
