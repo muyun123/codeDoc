@@ -55,5 +55,39 @@ function lingqu() {
         back();
         sleep(1600);
     }
+    while (text("去搜索").exists()) {
+        //要支持的动作
+        toast("存在去搜索");
+        text("去搜索").findOne().click();
+        sleep(1500);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(2500);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(10000);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(8000);
+        back();
+        sleep(1600);
+    }
+    while (text("逛一逛").exists()) {
+        //要支持的动作
+        toast("存在逛一逛");
+        text("逛一逛").findOne().click();
+        sleep(1500);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(2500);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(10000);
+        swipe(width / 2, height - 500, width / 2, 0, 500);
+        sleep(8000);
+        back();
+        sleep(1600);
+    }
+    if(text("撸猫").exists()){
+        while(1){
+            text("撸猫").findOne().click();
+        }
+    }
     toast("结束");
 }
+
